@@ -1,10 +1,11 @@
-package src.operators;
+package operators;
 
 public class Adder {
     private Integer operand1;
     private Integer operand2;
     private Boolean op; // true => + ,,, false => -
     private Integer result;
+
     public Adder(){
         operand1 = 0;
         operand2 = 0;
@@ -60,6 +61,10 @@ public class Adder {
      */
     public Integer getResult() {
         return result;
+    }
+
+    public Boolean getOp() {
+        return this.op;
     }
 
 }
