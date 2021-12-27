@@ -1,12 +1,12 @@
 package operators;
 
 public class LoadStore {
-    private Integer memLocation; // memory location 
+    private Integer memLocation; // memory location
     private Integer regNumber; // number of the register
     private Integer executionCycles;
     private Boolean op; // true -> load ,,, false -> store
     private Object memory[]; // TODO: memory file .. to be discussed
-    private Object regFile[]; // TODO: register file.. to be discussed
+    private Object regFile []; // TODO: register file.. to be discussed
 
     public LoadStore(int memLocation, int regNumber, Boolean op, Object []memory, Object []regFile){
         this.memLocation = memLocation;

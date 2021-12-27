@@ -1,7 +1,7 @@
 import operators.LoadStore;
 public class LoadBuffer {
     private final int length;
-    private final Object [][] table;
+    private Object [][] table ;
 
     public LoadBuffer(int length){
         this.length = length;
@@ -13,7 +13,7 @@ public class LoadBuffer {
 
     public boolean issue(LoadStore l){
         for(int i = 0 ; i < this.length ; i++){
-            if(!(boolean) this.table[i][0]){
+            if(! ((boolean) this.table[i][0])){
                 this.table[i][0] = true;
                 this.table[i][1] = l.getMemLocation();
                 this.table[i][2] = l.getExecutionCycles();
