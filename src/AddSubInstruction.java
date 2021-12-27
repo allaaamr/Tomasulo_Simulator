@@ -5,6 +5,13 @@ public class AddSubInstruction {
     private boolean op;  // true --> Add, false --> Sub
     private int executionCycles;
 
+    public AddSubInstruction (int rs, int rt, int rd, boolean op, int executionCycles){
+        this.rs = rs;
+        this.rt = rt;
+        this.rd = rd;
+        this.op = op;
+        this.executionCycles = executionCycles;
+    }
     public int getRs() {return rs; }
 
     public void setRs(int rs) {this.rs = rs;}

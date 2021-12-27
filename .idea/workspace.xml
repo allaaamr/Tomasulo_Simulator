@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="LoadBuffer done">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operators/Adder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/operators/Adder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operators/Multiplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/operators/Multiplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddSubInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddSubInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MulDivInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MulDivInstruction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
