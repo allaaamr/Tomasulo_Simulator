@@ -1,3 +1,5 @@
+import instructions.AddSubInstruction;
+
 public class ReservationStation {
     private boolean type; // true --> Add/Sub    , false --> Mul/Div
     private Object[][] table;
