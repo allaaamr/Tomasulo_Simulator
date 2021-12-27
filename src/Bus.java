@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+    import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Map;
@@ -19,5 +19,9 @@ public class Bus {
             a.update(register,updatedValue);
         }
         registerFile[register] = updatedValue;
+    }
+
+    public void pushInstruction(Integer register, BusListener inst){
+        waitingInstructions.get(register).add(inst);  
     }
 }
