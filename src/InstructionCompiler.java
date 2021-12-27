@@ -12,7 +12,7 @@ public class InstructionCompiler {
      public InstructionCompiler(String instruction) {
           Pattern pattern = Pattern.compile("([A-Za-z0-9]+) *");
           Matcher matcher = pattern.matcher(instruction);
-          if(matcher.find())
+          if(matcher.find()) //set the destination register
                instructionType = matcher.group(1);
 
           pattern = Pattern.compile(" +([A-Za-z0-9]+) *,");
@@ -23,7 +23,7 @@ public class InstructionCompiler {
           if (instructionType.equals("LD") || instructionType.equals("ST")){ // LD R1, 100 |||| ST R2, 200
                pattern = Pattern.compile(", *([A-Za-z0-9]+) *");
                matcher = pattern.matcher(instruction);
-               if (matcher.find())
+               if (matcher.find()) //set the memory address
                     memoryAddress = Integer.parseInt(matcher.group(1).substring(1));
           }
           else if (instructionType.equals("ADD") ||

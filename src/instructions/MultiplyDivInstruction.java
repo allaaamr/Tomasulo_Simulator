@@ -1,19 +1,19 @@
-package operators;
+package instructions;
 
-public class Multiplier {
+public class MultiplyDivInstruction {
     
     private Integer operand1;
     private Integer operand2;
     private Integer result;
     private Boolean op; // true => multiplication ... false => division
 
-    public Multiplier(){
+    public MultiplyDivInstruction(){
         operand1 = 0;
         operand2 = 0;
         result = 0;
         op = true;
     }
-    public Multiplier(int operand1, int operand2, boolean op){
+    public MultiplyDivInstruction(int operand1, int operand2, boolean op){
         this.operand1 = operand1;
         this.operand2 = operand2;
         this.op = op;

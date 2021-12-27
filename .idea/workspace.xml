@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="LoadBuffer done">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InstructionCompiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="Adding instruction compiler">
+      <change afterPath="$PROJECT_DIR$/src/Bus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BusListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/LoadStation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddSubInstruction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InstructionCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InstructionCompiler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LoadBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoadBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operators/LoadStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/operators/LoadStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MulDivInstruction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReservationStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationStation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operators/Adder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/AddSubInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operators/LoadStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/LoadStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operators/Multiplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/MultiplyDivInstruction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -88,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640598265154</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Adding instruction compiler">
+      <created>1640621872330</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1640621872330</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,7 +117,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="LoadBuffer done" />
-    <option name="LAST_COMMIT_MESSAGE" value="LoadBuffer done" />
+    <MESSAGE value="Adding instruction compiler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding instruction compiler" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tomasulo_Simulator$InstructionCompiler.ic" NAME="InstructionCompiler Coverage Results" MODIFIED="1640614491205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

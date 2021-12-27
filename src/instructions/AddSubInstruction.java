@@ -1,19 +1,20 @@
-package operators;
+package instructions;
 
-public class Adder {
+public class AddSubInstruction {
+    private Integer destination;
     private Integer operand1;
     private Integer operand2;
     private Boolean op; // true => + ,,, false => -
     private Integer result;
 
-    public Adder(){
+    public AddSubInstruction(){
         operand1 = 0;
         operand2 = 0;
         op = true;
         result = 0;
     }
 
-    public Adder(int op1, int op2, boolean op){
+    public AddSubInstruction(int op1, int op2, boolean op){
         operand1 = op1;
         operand2 = op2;
         this.op = op;
@@ -22,8 +23,9 @@ public class Adder {
 
     public Integer compute(){
         if(op)
-            result=operand1+operand2;
-        else result=operand1-operand2;
+            result = operand1+operand2;
+        else
+            result = operand1-operand2;
 
         return result;
     }

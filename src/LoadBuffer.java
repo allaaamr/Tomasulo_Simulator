@@ -1,4 +1,4 @@
-import operators.LoadStore;
+import instructions.LoadStore;
 public class LoadBuffer {
     private final int length;
     private Object [][] table ;
