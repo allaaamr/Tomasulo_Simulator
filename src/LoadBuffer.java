@@ -9,6 +9,7 @@ public class LoadBuffer {
         // column 0 -> Busy
         // column 1 -> Address
         // column 2 -> Remaining cycles for execution
+
     }
 
     public boolean issue(LoadStore l){
