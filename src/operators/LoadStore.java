@@ -1,8 +1,9 @@
-package src.operators;
+package operators;
 
 public class LoadStore {
     private Integer memLocation; // memory location 
     private Integer regNumber; // number of the register
+    private Integer executionCycles;
     private Boolean op; // true -> load ,,, false -> store
     private Object memory[]; // TODO: memory file .. to be discussed
     private Object regFile[]; // TODO: register file.. to be discussed
@@ -35,6 +36,8 @@ public class LoadStore {
         this.op = op;
     }
 
+    public void setExecutionCycles(int cycles){ this.executionCycles = cycles; }
+
     public void setMemory(Object [] memory){
         this.memory = memory;
     }
@@ -45,6 +48,9 @@ public class LoadStore {
 
     public Integer getMemLocation(){
         return memLocation;
+    }
+
+    public Integer getExecutionCycles(){return executionCycles;
     }
 
     public Integer getRegNumber(){
