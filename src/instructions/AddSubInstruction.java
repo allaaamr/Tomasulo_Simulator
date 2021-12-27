@@ -29,38 +29,30 @@ public class AddSubInstruction {
 
         return result;
     }
+    public Integer getDestination() {
+        return operand1;
+    }
 
-    /**
-     * @return Integer return the operand1
-     */
+    public void setDestination(Integer operand1) {
+        this.operand1 = operand1;
+    }
+
     public Integer getOperand1() {
         return operand1;
     }
 
-    /**
-     * @param operand1 the operand1 to set
-     */
     public void setOperand1(Integer operand1) {
         this.operand1 = operand1;
     }
 
-    /**
-     * @return Integer return the operand2
-     */
     public Integer getOperand2() {
         return operand2;
     }
 
-    /**
-     * @param operand2 the operand2 to set
-     */
     public void setOperand2(Integer operand2) {
         this.operand2 = operand2;
     }
 
-    /**
-     * @return Integer return the result
-     */
     public Integer getResult() {
         return result;
     }
