@@ -5,6 +5,14 @@ public class MulDivInstruction {
     private boolean op; // true --> Mul, false --> Div
     private int executionCycles;
 
+    public MulDivInstruction (int rs, int rt, int rd, boolean op, int executionCycles){
+        this.rs = rs;
+        this.rt = rt;
+        this.rd = rd;
+        this.op = op;
+        this.executionCycles = executionCycles;
+    }
+
     public int getRs() {return rs; }
 
     public void setRs(int rs) {this.rs = rs;}
