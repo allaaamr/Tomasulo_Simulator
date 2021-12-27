@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="LoadBuffer done">
+      <change afterPath="$PROJECT_DIR$/src/StoreBuffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddSubInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddSubInstruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MulDivInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MulDivInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LoadBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoadBuffer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -85,7 +90,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="StoreBuffer" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
