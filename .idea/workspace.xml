@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="LoadBuffer done">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operators/Adder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operators/LoadStore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operators/Multiplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Tomasulo_Simulator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tomasulo_Simulator.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoadBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoadBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operators/Adder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/operators/Adder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operators/Multiplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/operators/Multiplier.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +40,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -94,6 +92,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="LoadBuffer done" />

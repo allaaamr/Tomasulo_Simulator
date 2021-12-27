@@ -1,4 +1,4 @@
-package src.operators;
+package operators;
 
 public class Multiplier {
     
