@@ -29,6 +29,19 @@ public class StoreBuffer {
         }
         return false;
     }
+   /*if we keep track of the location of the instruction in the table then we will just send the row number to this method and
+   remove the loop */
+    public void finishExecution(){
+        for(int j = 0 ; j < this.length; j++){
+            if((Integer) table[j][4] == 0){
+                table[j][0] = null;
+                table[j][1] = null;
+                table [j][2] = null;
+                table[j][3] = false;
+                table [j][4] = false;
+            }
+        }
+    }
 
 
     public Object[][] getTable(){
