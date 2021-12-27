@@ -1,6 +1,7 @@
+import operators.LoadStore;
 public class LoadBuffer {
-    int length;
-    Object [][] table;
+    private final int length;
+    private final Object [][] table;
 
     public LoadBuffer(int length){
         this.length = length;
@@ -10,12 +11,12 @@ public class LoadBuffer {
         // column 2 -> Remaining cycles for execution
     }
 
-    public boolean issue(LoadInstruction l){
+    public boolean issue(LoadStore l){
         for(int i = 0 ; i < this.length ; i++){
             if(!(boolean) this.table[i][0]){
                 this.table[i][0] = true;
-                this.table[i][1] = l.address;
-                this.table[i][2] = l.executionCycles;
+                this.table[i][1] = l.getMemLocation();
+                this.table[i][2] = l.getExecutionCycles();
                 // Instruction issued successfully.
                 return true;
             }
@@ -23,4 +24,8 @@ public class LoadBuffer {
         // No available slots.
         return false;
     }
+
+    public int getLength() { return length; }
+
+    public Object[][] getTable() { return table; }
 }
