@@ -1,12 +1,14 @@
-import operators.LoadStore;
+import instructions.LoadStore;
 
 public class StoreBuffer {
     private Object [][] table;
     final private int length;
+    private int count ;
 
     public StoreBuffer(int length) {
         this.table = new Object[length][5];
         this.length = length;
+        count = 0;
         // column 0-> memory address
         // column 1-> register
         // column 2-> waiting register
@@ -20,10 +22,12 @@ public class StoreBuffer {
             if (!(boolean) table[i][3]) {
                 registerNumber = instruction.getRegNumber();
                 table[i][0] = instruction.getMemLocation();
-                table[i][1] = RegisterFile[registerNumber][0] instanceof Boolean ? RegisterFile[registerNumber][0] : null;
+                //instanceof depends on how we're going to represent the op
+                table[i][1] = RegisterFile[registerNumber][1] instanceof Boolean ? RegisterFile[registerNumber][1] : null;
                 table[i][2] = RegisterFile[registerNumber][0] instanceof Boolean ? null : RegisterFile[registerNumber][0];
                 table[i][3] = true;
                 table[i][4] = instruction.getExecutionCycles();
+                count++;
                 return true;
             }
         }
@@ -39,15 +43,20 @@ public class StoreBuffer {
                 table [j][2] = null;
                 table[j][3] = false;
                 table [j][4] = false;
+                count--;
             }
         }
     }
 
 
+
+    public boolean freeSpace(){
+        return count != (table.length - 1);
+    }
+
     public Object[][] getTable(){
         return table;
     }
-
 
 }
 
