@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="LoadBuffer done">
-      <change afterPath="$PROJECT_DIR$/src/StoreBuffer.java" afterDir="false" />
+    <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="StoreBuffer done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoadBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoadBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StoreBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StoreBuffer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +81,28 @@
       <option name="project" value="LOCAL" />
       <updated>1640598265154</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="LoadBuffer done">
+      <created>1640629667636</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1640629667636</updated>
+    </task>
+    <task id="LOCAL-00003" summary="LoadBuffer done">
+      <created>1640629708164</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1640629708164</updated>
+    </task>
+    <task id="LOCAL-00004" summary="StoreBuffer Done">
+      <created>1640631692907</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1640631692907</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,6 +131,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="LoadBuffer done" />
-    <option name="LAST_COMMIT_MESSAGE" value="LoadBuffer done" />
+    <MESSAGE value="StoreBuffer Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="StoreBuffer Done" />
   </component>
 </project>
