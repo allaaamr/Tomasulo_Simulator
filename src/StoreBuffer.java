@@ -16,20 +16,20 @@ public class StoreBuffer {
         // column 4-> remaining cycles
     }
 
-    public boolean issue(LoadStore instruction ,Object [][] RegisterFile ) {
+    public boolean issue(Register register, int address) {
         int registerNumber ;
         for (int i = 0; i < this.length; i++) {
-            if (!(boolean) table[i][3]) {
-                registerNumber = instruction.getRegNumber();
-                table[i][0] = instruction.getMemLocation();
-                //instanceof depends on how we're going to represent the op
-                table[i][1] = RegisterFile[registerNumber][1] instanceof Boolean ? RegisterFile[registerNumber][1] : null;
-                table[i][2] = RegisterFile[registerNumber][0] instanceof Boolean ? null : RegisterFile[registerNumber][0];
-                table[i][3] = true;
-                table[i][4] = instruction.getExecutionCycles();
-                count++;
-                return true;
-            }
+//            if (!(boolean) table[i][3]) {
+//                registerNumber = instruction.getRegNumber();
+//                table[i][0] = instruction.getMemLocation();
+//                //instanceof depends on how we're going to represent the op
+//                table[i][1] = RegisterFile[registerNumber][1] instanceof Boolean ? RegisterFile[registerNumber][1] : null;
+//                table[i][2] = RegisterFile[registerNumber][0] instanceof Boolean ? null : RegisterFile[registerNumber][0];
+//                table[i][3] = true;
+//                table[i][4] = instruction.getExecutionCycles();
+//                count++;
+//                return true;
+//            }
         }
         return false;
     }
