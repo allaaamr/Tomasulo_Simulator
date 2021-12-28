@@ -7,6 +7,9 @@ public class MultiplyDivInstruction {
     private Integer operand2;
     private Integer result;
     private Boolean op; // true => multiplication ... false => division
+    private Integer executionCycles;
+
+
 
     public MultiplyDivInstruction(){
         operand1 = 0;
@@ -19,6 +22,14 @@ public class MultiplyDivInstruction {
         this.operand2 = operand2;
         this.op = op;
     }
+
+    public Integer getExecutionCycles() { return executionCycles; }
+
+    public void setExecutionCycles(Integer executionCycles) {this.executionCycles = executionCycles;}
+
+    public Boolean getOp() { return op;}
+
+    public void setOp(Boolean op) { this.op = op;}
 
     public Integer getDestination() {
         return operand1;

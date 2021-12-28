@@ -6,6 +6,17 @@ public class AddSubInstruction {
     private Integer operand2;
     private Boolean op; // true => + ,,, false => -
     private Integer result;
+    private Integer executionCycles;
+
+    public Integer getExecutionCycles() {
+        return executionCycles;
+    }
+
+    public void setExecutionCycles(Integer executionCycles) {
+        this.executionCycles = executionCycles;
+    }
+
+
 
     public AddSubInstruction(){
         operand1 = 0;
