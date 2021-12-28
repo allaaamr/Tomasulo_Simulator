@@ -1,3 +1,5 @@
+import instructions.*;
+
 public class ReservationStation {
     private boolean type; // true --> Add/Sub    , false --> Mul/Div
     private Object[][] table;
@@ -28,8 +30,8 @@ public class ReservationStation {
         // column 6 -> Remaining cycles for execution
     }
     public boolean issueAddSub(AddSubInstruction a, Object [][] RegisterFile ){
-        int rs = a.getRs();
-        int rt = a.getRt();
+        int rs = a.getOperand1();
+        int rt = a.getOperand2();
 
         for(int i = 0 ; i < this.length ; i++){
             if(!(boolean) this.table[i][0]){
@@ -48,9 +50,9 @@ public class ReservationStation {
         return false;
     }
 
-    public boolean issueMulDiv(MulDivInstruction m , Object [][] RegisterFile ){
-        int rs = m.getRs();
-        int rt = m.getRt();
+    public boolean issueMulDiv(MultiplyDivInstruction m , Object [][] RegisterFile ){
+        int rs = m.getOperand1();
+        int rt = m.getOperand2();
 
         for(int i = 0 ; i < this.length ; i++){
             if(!(boolean) this.table[i][0]){
