@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="Adding Bus and BusListener">
-      <change beforePath="$PROJECT_DIR$/src/instructions/AddSubInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/AddSubInstruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/instructions/MultiplyDivInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/MultiplyDivInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StoreBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StoreBuffer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,26 +52,27 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
-  <component name="RunManager" selected="Application.InstructionCompiler">
-    <configuration name="InstructionCompiler" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="InstructionCompiler" />
-      <module name="Tomasulo_Simulator" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoadStation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.StoreBuffer">
+    <configuration name="LoadStation" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="LoadStation" />
       <module name="Tomasulo_Simulator" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.LoadStation" />
-      </list>
-    </recent_temporary>
+    <configuration name="StoreBuffer" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="StoreBuffer" />
+      <module name="Tomasulo_Simulator" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.StoreBuffer" />
+      <item itemvalue="Application.LoadStation" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
