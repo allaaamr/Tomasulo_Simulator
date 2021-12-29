@@ -1,9 +1,7 @@
-package bus;
-
 public class Register {
-    boolean ready;
-    int value;
-    String instruction;
+    private boolean ready;
+    private int value;
+    private String instruction;
 
     public Register(){
         this.value = 0;

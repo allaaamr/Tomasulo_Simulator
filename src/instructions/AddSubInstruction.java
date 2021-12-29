@@ -9,17 +9,19 @@ public class AddSubInstruction implements BusListener{
     private Integer executionCycles;
     private Bus bus;
 
+
+    public AddSubInstruction(int destination, boolean op, Bus bus){
+        this.op = op;
+        this.bus = bus;
+        this.destination = destination;
+    }
+
     public Integer getExecutionCycles() {
         return executionCycles;
     }
 
     public void setExecutionCycles(Integer executionCycles) {
         this.executionCycles = executionCycles;
-    }
-
-    public AddSubInstruction(int destination, boolean op, Bus bus){
-        this.op = op;
-        this.bus = bus;
     }
 
     public Integer compute(int operand1, int operand2){
@@ -33,27 +35,11 @@ public class AddSubInstruction implements BusListener{
     }
 
     public Integer getDestination() {
-        return operand1;
+        return destination;
     }
 
-    public void setDestination(Integer operand1) {
-        this.operand1 = operand1;
-    }
-
-    public Integer getOperand1() {
-        return operand1;
-    }
-
-    public void setOperand1(Integer operand1) {
-        this.operand1 = operand1;
-    }
-
-    public Integer getOperand2() {
-        return operand2;
-    }
-
-    public void setOperand2(Integer operand2) {
-        this.operand2 = operand2;
+    public void setDestination(Integer destination) {
+        this.destination = destination;
     }
 
     public Integer getResult() {
