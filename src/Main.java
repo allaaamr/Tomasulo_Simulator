@@ -1,3 +1,5 @@
+import bus.Bus;
+
 import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -10,12 +12,14 @@ public class Main{
     StoreBuffer storeBuffer;
     ReservationStation AddSubStation;
     ReservationStation MulDivStation;
+    Bus bus;
 
     public Main(String path, int loadBufferLength, int storeBufferLength, int AddSub, int MulDiv) throws IOException{
+        bus = new Bus();
         loadBuffer = new LoadBuffer(loadBufferLength);
         storeBuffer = new StoreBuffer(storeBufferLength);
-        AddSubStation = new ReservationStation(AddSub);
-        MulDivStation= new ReservationStation(MulDiv);
+        AddSubStation = new ReservationStation(AddSub, bus);
+        MulDivStation= new ReservationStation(MulDiv, bus);
         for(int i = 0 ; i < registerFile.length ; i++){
             registerFile[i] = new Register();
         }
