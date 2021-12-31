@@ -62,7 +62,7 @@ public class Main{
                     break;
 
                 case "SD":
-                    issued = storeBuffer.issue(destination, firstOperand, secondOperand ,false);
+                    issued = storeBuffer.issue(firstOperand,destination);
                     break;
             }
             if(issued)
@@ -77,6 +77,6 @@ public class Main{
     public static void main(String [] args){
 
     }
-};
+}
 
 
