@@ -16,14 +16,6 @@ public class AddSubInstruction implements BusListener{
         this.destination = destination;
     }
 
-    public Integer getExecutionCycles() {
-        return executionCycles;
-    }
-
-    public void setExecutionCycles(Integer executionCycles) {
-        this.executionCycles = executionCycles;
-    }
-
     public Integer compute(int operand1, int operand2){
         if(op)
             result = operand1+operand2;
@@ -32,6 +24,14 @@ public class AddSubInstruction implements BusListener{
 
         bus.notify(destination, result);
         return result;
+    }
+
+    public Integer getExecutionCycles() {
+        return executionCycles;
+    }
+
+    public void setExecutionCycles(Integer executionCycles) {
+        this.executionCycles = executionCycles;
     }
 
     public Integer getDestination() {

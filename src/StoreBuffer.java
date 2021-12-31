@@ -1,12 +1,18 @@
 import bus.BusListener;
+import bus.Clock;
+import instructions.Register;
 
 public class StoreBuffer implements BusListener {
-    private Object [][] table;
-    final private int length;
 
-    public StoreBuffer(int length) {
-        this.table = new Object[length][5];
+    private Clock clock ;
+    final private int length;
+    private Object [][] table;
+
+    public StoreBuffer(Clock clock , int length) {
+        this.clock = clock;
         this.length = length;
+        this.table = new Object[length][5];
+
         // column 0-> memory address
         // column 1-> register
         // column 2-> waiting register

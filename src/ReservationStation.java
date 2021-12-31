@@ -5,11 +5,13 @@ public class ReservationStation implements BusListener{
     private Object[][] table;
     private Integer length;
     private Bus bus;
+    private Clock clock;
 
-    public ReservationStation (Integer length, Bus bus){
+    public ReservationStation (Clock clock , Integer length, Bus bus){
         this.length= length;
         this.table = new Object[length][7];
         this.bus = bus;
+        this.clock = clock;
         // column 0 -> Busy
         // column 1 -> Op
         // column 2 -> Vj

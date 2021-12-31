@@ -1,12 +1,17 @@
 import bus.Bus;
 import bus.BusListener;
-import instructions.*;
+import bus.Clock;
+
 public class LoadBuffer implements BusListener {
+
     private final int length;
     private Object [][] table ;
     private Bus bus;
+    private Clock clock;
 
-    public LoadBuffer(int length){
+    public LoadBuffer(Clock clock , Integer length){
+
+        this.clock = clock;
         this.length = length;
         this.table = new Object[length][3];
         // column 0 -> Busy

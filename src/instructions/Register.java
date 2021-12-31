@@ -1,6 +1,9 @@
+package instructions;
+
 public class Register {
+
     private boolean ready;
-    private int value;
+    private double value ;
     private String instruction;
 
     public Register(){
@@ -8,7 +11,12 @@ public class Register {
         this.ready = true;
     }
 
-    public int getValue() {
+    public void updateRegister (double newVal) {
+        ready = true;
+        this.value = newVal;
+    }
+
+    public double getValue() {
         return value;
     }
 
@@ -20,7 +28,7 @@ public class Register {
         this.ready = ready;
     }
 
-    public void setValue(int value) {
+    public void setValue(double value) {
         this.value = value;
     }
 

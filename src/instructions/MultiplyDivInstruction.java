@@ -15,6 +15,16 @@ public class MultiplyDivInstruction {
         this.destination = destination;
     }
 
+    public Integer compute(int operand1, int operand2){
+        if(op)
+            result = operand1*operand2;
+        else
+            result = operand1/operand2;
+
+        bus.notify(destination, result);
+        return result;
+    }
+
     public Integer getExecutionCycles() { return executionCycles; }
 
     public void setExecutionCycles(Integer executionCycles) {this.executionCycles = executionCycles;}
@@ -35,13 +45,5 @@ public class MultiplyDivInstruction {
         return result;
     }
 
-    public Integer compute(int operand1, int operand2){
-        if(op)
-            result = operand1*operand2;
-        else
-            result = operand1/operand2;
-
-        return result;
-    }
 
 }

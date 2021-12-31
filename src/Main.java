@@ -1,31 +1,46 @@
 import bus.Bus;
+import bus.Clock;
+import instructions.Register;
 
 import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Scanner;
 
 public class Main{
-    Register[] registerFile = new Register[32];
-    Queue <InstructionCompiler> queue;
+
+    Clock clock;
+    double memory [] ;
+    Register[] registerFile ;
+    Bus bus;
+
     LoadBuffer loadBuffer;
     StoreBuffer storeBuffer;
     ReservationStation AddSubStation;
     ReservationStation MulDivStation;
-    Bus bus;
+    Queue <InstructionCompiler> queue;
+
 
     public Main(String path, int loadBufferLength, int storeBufferLength, int AddSub, int MulDiv) throws IOException{
-        bus = new Bus();
-        loadBuffer = new LoadBuffer(loadBufferLength);
-        storeBuffer = new StoreBuffer(storeBufferLength);
-        AddSubStation = new ReservationStation(AddSub, bus);
-        MulDivStation= new ReservationStation(MulDiv, bus);
+
+        clock.updateClock(); ;
+        memory = new double[2048];
+        registerFile =  new Register[32];
+        bus = new Bus(registerFile);
+        loadBuffer = new LoadBuffer(clock , loadBufferLength);
+        storeBuffer = new StoreBuffer(clock ,storeBufferLength);
+        AddSubStation = new ReservationStation(clock , AddSub, bus);
+        MulDivStation= new ReservationStation(clock , MulDiv, bus);
+
+        //initializing register file registers
         for(int i = 0 ; i < registerFile.length ; i++){
             registerFile[i] = new Register();
         }
+
         queue = new LinkedList<>();
         BufferedReader br = new BufferedReader(new FileReader(new File(path)));
         String line;
+
+        //filling the instruction queue from a file
         while((line = br.readLine()) != null){
             queue.add(new InstructionCompiler(line));
         }
@@ -33,12 +48,17 @@ public class Main{
 
     public void executeProgram(){
         while(!queue.isEmpty()){
+
+            clock.updateClock();
             InstructionCompiler nextInstruction = queue.peek();
+
             Register firstOperand = registerFile[nextInstruction.getFirstOperand()];
             Register secondOperand = registerFile[nextInstruction.getSecondOperand()];
             int destination = nextInstruction.getDestinationRegister();
             int address = nextInstruction.getMemoryAddress();
+
             boolean issued = false;
+
             switch (nextInstruction.getInstructionType()){
 
                 case "ADD":

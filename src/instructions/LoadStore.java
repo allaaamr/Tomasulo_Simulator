@@ -1,17 +1,19 @@
-import bus.Register;
 package instructions;
+import bus.Bus;
 
 public class LoadStore {
 
     private Integer address;// memory location
     private Boolean op; // true -> load ,,, false -> store
-    Register destination;
-    private int [] memory; // TODO: memory file .. to be discussed
+    private Register destination;
+    private double [] memory;
+    private Bus bus ;
 
-    public LoadStore(Register destination, int address, Boolean op, int []memory){
+    public LoadStore(Register destination, int address, Boolean op, Bus bus, double []memory){
         this.address = address;
         this.destination = destination;
         this.op = op;
+        this.bus = bus;
         this.memory = memory;
     }
 
@@ -47,11 +49,4 @@ public class LoadStore {
         this.destination = destination;
     }
 
-    public int[] getMemory() {
-        return memory;
-    }
-
-    public void setMemory(int[] memory) {
-        this.memory = memory;
-    }
 }
