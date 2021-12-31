@@ -1,72 +1,57 @@
+import bus.Register;
 package instructions;
 
 public class LoadStore {
 
-    private Integer memLocation;// memory location
-    private Integer regNumber; // number of the register
-    private Integer executionCycles;
+    private Integer address;// memory location
     private Boolean op; // true -> load ,,, false -> store
-    private Object memory[]; // TODO: memory file .. to be discussed
-    private Object regFile [] ; // TODO: register file.. to be discussed
+    Register destination;
+    private int [] memory; // TODO: memory file .. to be discussed
 
-    public LoadStore(int memLocation, int regNumber, Boolean op, Object []memory, Object []regFile){
-        this.memLocation = memLocation;
-        this.regNumber = regNumber;
+    public LoadStore(Register destination, int address, Boolean op, int []memory){
+        this.address = address;
+        this.destination = destination;
         this.op = op;
         this.memory = memory;
-        this.regFile = regFile;
     }
 
     public void execute(){
         if(op){
-            regFile[regNumber] = memory[memLocation];
+            destination.setValue(memory[address]);
         }
         else
-            memory[memLocation] = regFile[regNumber];
+            memory[address] = destination.getValue();
     }
 
-    public void setMemLocation(int memLocation){
-        this.memLocation = memLocation;
+    public Integer getAddress() {
+        return address;
     }
 
-    public void setRegNumber(int regNumber){
-        this.regNumber = regNumber;
+    public void setAddress(Integer address) {
+        this.address = address;
     }
 
-    public void setOp(Boolean op){
-        this.op = op;
-    }
-
-    public void setExecutionCycles(int cycles){ this.executionCycles = cycles; }
-
-    public void setMemory(Object [] memory){
-        this.memory = memory;
-    }
-
-    public void setRegFile(Object [] regFile){
-        this.regFile = regFile;
-    }
-
-    public Integer getMemLocation(){
-        return memLocation;
-    }
-
-    public Integer getExecutionCycles(){return executionCycles;
-    }
-
-    public Integer getRegNumber(){
-        return regNumber;
-    }
-
-    public Boolean getOp(){
+    public Boolean getOp() {
         return op;
     }
 
-    public Object[] getMemory(){
+    public void setOp(Boolean op) {
+        this.op = op;
+    }
+
+    public Register getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Register destination) {
+        this.destination = destination;
+    }
+
+    public int[] getMemory() {
         return memory;
     }
 
-    public Object[] getRegFile(){
-        return regFile;
+    public void setMemory(int[] memory) {
+        this.memory = memory;
     }
 }

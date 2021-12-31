@@ -1,7 +1,7 @@
-    import java.util.ArrayList;
-import java.util.Arrays;
+package bus;
+
+import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Map;
 
 public class Bus {
 
