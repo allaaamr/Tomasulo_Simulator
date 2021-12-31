@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="Adding Bus and BusListener">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ReservationStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationStation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/instructions/AddSubInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/AddSubInstruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/instructions/MultiplyDivInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/MultiplyDivInstruction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640628016384</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Adding Bus and BusListener">
+      <created>1640628383503</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1640628383503</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
