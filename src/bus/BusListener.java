@@ -2,6 +2,6 @@ package bus;
 
 public interface BusListener {
 
-    public void update (Integer register , Integer updatedValue) ;
+    public void update (String instruction,double updatedValue) ;
 
 }

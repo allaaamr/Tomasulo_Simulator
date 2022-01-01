@@ -3,31 +3,40 @@ import bus.*;
 
 public class MultiplyDivInstruction {
 
+    private String station;
     private Integer destination ;
-    private Integer result;
+    private double result;
     private Boolean op; // true => multiplication ... false => division
-    private Integer executionCycles;
     private Bus bus;
 
-    public MultiplyDivInstruction(int destination, boolean op, Bus bus){
+    public MultiplyDivInstruction(String station , int destination, boolean op, Bus bus){
+        this.station = station;
         this.op = op;
         this.bus = bus;
         this.destination = destination;
     }
 
-    public Integer compute(int operand1, int operand2){
-        if(op)
+    public double compute(double operand1,double operand2){
+        if(op){
             result = operand1*operand2;
-        else
-            result = operand1/operand2;
-
-        bus.notify(destination, result);
+            System.out.println("MUL RESULT: " + result );
+        }
+        else {
+            result = operand1 / operand2;
+            System.out.println("DIV RESULT: " + result );
+        }
+        bus.notify(station, result);
         return result;
     }
 
-    public Integer getExecutionCycles() { return executionCycles; }
 
-    public void setExecutionCycles(Integer executionCycles) {this.executionCycles = executionCycles;}
+    public String getStation() {
+        return station;
+    }
+
+    public void setStation(String station) {
+        this.station = station;
+    }
 
     public Boolean getOp() { return op;}
 
@@ -41,7 +50,7 @@ public class MultiplyDivInstruction {
         this.destination = destination;
     }
 
-    public Integer getResult() {
+    public double getResult() {
         return result;
     }
 

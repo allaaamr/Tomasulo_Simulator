@@ -28,13 +28,13 @@ public class StoreBuffer implements BusListener {
                 table[i][1] = register.isReady() ? register.getValue() : null;
                 table[i][2] = !(register.isReady()) ? register.getInstruction() : null;
                 table[i][3] = true;
-               //table[i][4] = cycles;
+                //table[i][4] = cycles;
             }
         }
         return false;
     }
-   /*if we keep track of the location of the instruction in the table then we will just send the row number to this method and
-   remove the loop */
+    /*if we keep track of the location of the instruction in the table then we will just send the row number to this method and
+    remove the loop */
     public void finishExecution(){
         for(int j = 0 ; j < this.length; j++){
             if((Integer) table[j][4] == 0){
@@ -51,7 +51,7 @@ public class StoreBuffer implements BusListener {
     }
 
     @Override
-    public void update(Integer register, Integer updatedValue) {
+    public void update(String instruction,double updatedValue) {
 
     }
 }

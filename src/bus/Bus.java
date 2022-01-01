@@ -1,29 +1,29 @@
 package bus;
 import instructions.Register;
 
-import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Bus {
 
     private Register registerFile [] ;
-    private Hashtable<Integer, ArrayList<BusListener>> waitingInstructions ;
+    private Hashtable<String,Register> waitingInstructions ;
+    BusListener [] listeners ;
 
-    public Bus (Register [] registerFile) {
+    public Bus (Register [] registerFile,BusListener loadBuffer,BusListener storeBuffer,BusListener addSubStation, BusListener mulDivStation) {
         this.registerFile = registerFile;
-        waitingInstructions = new Hashtable<Integer, ArrayList<BusListener>>();
+        listeners = new BusListener[4] ;
+        listeners[0] = loadBuffer;
+        listeners[1] = storeBuffer;
+        listeners[2] = addSubStation;
+        listeners[3] = mulDivStation;
+        waitingInstructions = new Hashtable<>();
     }
 
-    public void notify (Integer register , Integer updatedValue){
-        ArrayList<BusListener> instructionsToBeNotified = waitingInstructions.get(register);
-        for (BusListener a: instructionsToBeNotified){
-            a.update(register,updatedValue);
-        }
-        registerFile[register].updateRegister(updatedValue);
+    public void notify (String instruction ,double updatedValue){
+        for (BusListener i : listeners)
+            i.update(instruction,updatedValue);
+
+        waitingInstructions.get(instruction).updateRegister(updatedValue);
     }
 
-    public void pushInstruction(Integer register, BusListener inst)
-    {
-        waitingInstructions.get(register).add(inst);
-    }
 }

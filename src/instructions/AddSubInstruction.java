@@ -2,36 +2,42 @@ package instructions;
 import bus.*;
 
 
-public class AddSubInstruction implements BusListener{
+public class AddSubInstruction {
+
+    private String station;
     private Integer destination;
     private Boolean op; // true => + ,,, false => -
-    private Integer result;
-    private Integer executionCycles;
+    private double result;
     private Bus bus;
 
 
-    public AddSubInstruction(int destination, boolean op, Bus bus){
+    public AddSubInstruction(String station , int destination, boolean op, Bus bus){
+        this.station = station;
         this.op = op;
         this.bus = bus;
         this.destination = destination;
     }
 
-    public Integer compute(int operand1, int operand2){
-        if(op)
+    public double compute(double operand1,double operand2){
+        if(op){
             result = operand1+operand2;
-        else
-            result = operand1-operand2;
-
-        bus.notify(destination, result);
+            System.out.println("ADD RESULT: " + result );
+        }
+        else {
+            result = operand1 - operand2;
+            System.out.println("SUB RESULT: " + result );
+        }
+        bus.notify(station, result);
         return result;
     }
 
-    public Integer getExecutionCycles() {
-        return executionCycles;
+
+    public String getStation() {
+        return station;
     }
 
-    public void setExecutionCycles(Integer executionCycles) {
-        this.executionCycles = executionCycles;
+    public void setStation(String station) {
+        this.station = station;
     }
 
     public Integer getDestination() {
@@ -42,7 +48,7 @@ public class AddSubInstruction implements BusListener{
         this.destination = destination;
     }
 
-    public Integer getResult() {
+    public double getResult() {
         return result;
     }
 
@@ -50,10 +56,4 @@ public class AddSubInstruction implements BusListener{
         return this.op;
     }
 
-    @Override
-    public void update(Integer register, Integer updatedValue) {
-
-
-
-    }
 }

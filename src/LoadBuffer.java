@@ -9,10 +9,11 @@ public class LoadBuffer implements BusListener {
     private Bus bus;
     private Clock clock;
 
-    public LoadBuffer(Clock clock , Integer length){
+    public LoadBuffer(Clock clock , Integer length, Bus bus){
 
         this.clock = clock;
         this.length = length;
+        this.bus = bus ;
         this.table = new Object[length][3];
         // column 0 -> Busy
         // column 1 -> Address
@@ -33,12 +34,8 @@ public class LoadBuffer implements BusListener {
         return false;
     }
 
-    public int getLength() { return length; }
-
-    public Object[][] getTable() { return table; }
-
     @Override
-    public void update(Integer register, Integer updatedValue) {
+    public void update(String instruction,double updatedValue) {
 
     }
 }

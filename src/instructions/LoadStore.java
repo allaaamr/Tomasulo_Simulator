@@ -3,13 +3,15 @@ import bus.Bus;
 
 public class LoadStore {
 
+    private String station;
     private Integer address;// memory location
     private Boolean op; // true -> load ,,, false -> store
     private Register destination;
     private double [] memory;
     private Bus bus ;
 
-    public LoadStore(Register destination, int address, Boolean op, Bus bus, double []memory){
+    public LoadStore(String station,Register destination, int address, Boolean op, Bus bus, double []memory){
+        this.station = station;
         this.address = address;
         this.destination = destination;
         this.op = op;
@@ -23,6 +25,15 @@ public class LoadStore {
         }
         else
             memory[address] = destination.getValue();
+    }
+
+
+    public String getStation() {
+        return station;
+    }
+
+    public void setStation(String station) {
+        this.station = station;
     }
 
     public Integer getAddress() {
