@@ -5,17 +5,15 @@ import bus.*;
 public class AddSubInstruction {
 
     private String station;
-    private Integer destination;
     private Boolean op; // true => + ,,, false => -
     private double result;
     private Bus bus;
 
 
-    public AddSubInstruction(String station , int destination, boolean op, Bus bus){
+    public AddSubInstruction(String station , boolean op, Bus bus){
         this.station = station;
         this.op = op;
         this.bus = bus;
-        this.destination = destination;
     }
 
     public double compute(double operand1,double operand2){
@@ -38,14 +36,6 @@ public class AddSubInstruction {
 
     public void setStation(String station) {
         this.station = station;
-    }
-
-    public Integer getDestination() {
-        return destination;
-    }
-
-    public void setDestination(Integer destination) {
-        this.destination = destination;
     }
 
     public double getResult() {

@@ -7,15 +7,16 @@ public class Bus {
 
     private Register registerFile [] ;
     private Hashtable<String,Register> waitingInstructions ;
-    BusListener [] listeners ;
+    private BusListener [] listeners ;
 
-    public Bus (Register [] registerFile,BusListener loadBuffer,BusListener storeBuffer,BusListener addSubStation, BusListener mulDivStation) {
+
+    public Hashtable<String, Register> getWaitingInstructions() {
+        return waitingInstructions;
+    }
+
+    public Bus (Register [] registerFile) {
         this.registerFile = registerFile;
         listeners = new BusListener[4] ;
-        listeners[0] = loadBuffer;
-        listeners[1] = storeBuffer;
-        listeners[2] = addSubStation;
-        listeners[3] = mulDivStation;
         waitingInstructions = new Hashtable<>();
     }
 
@@ -23,7 +24,18 @@ public class Bus {
         for (BusListener i : listeners)
             i.update(instruction,updatedValue);
 
-        waitingInstructions.get(instruction).updateRegister(updatedValue);
+        Register r =  waitingInstructions.get(instruction);
+        if(r.getInstruction().equals(instruction)) {
+            waitingInstructions.get(instruction).updateRegister(updatedValue);
+            waitingInstructions.remove(instruction);
+        }
+    }
+    public void pushWaitingInstruction (String station,Register register) {
+        waitingInstructions.put(station,register);
+    }
+
+    public void setListeners(BusListener l []){
+        this.listeners = l;
     }
 
 }
