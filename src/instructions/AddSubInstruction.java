@@ -11,11 +11,10 @@ public class AddSubInstruction {
     private Bus bus;
 
 
-    public AddSubInstruction(String station , int destination, boolean op, Bus bus){
+    public AddSubInstruction(String station ,boolean op, Bus bus){
         this.station = station;
         this.op = op;
         this.bus = bus;
-        this.destination = destination;
     }
 
     public double compute(double operand1,double operand2){

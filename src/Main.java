@@ -1,8 +1,10 @@
 import bus.Bus;
+import bus.BusListener;
 import bus.Clock;
 import instructions.Register;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -15,8 +17,8 @@ public class Main{
 
     LoadBuffer loadBuffer;
     StoreBuffer storeBuffer;
-    ReservationStation AddSubStation;
-    ReservationStation MulDivStation;
+    ReservationStation addSubStaion;
+    ReservationStation mulDivStaion;
     Queue <InstructionCompiler> queue;
 
 
@@ -27,15 +29,17 @@ public class Main{
         clock = new Clock();
         memory = new double[2048];
         registerFile =  new Register[32];
+
+        bus = new Bus(registerFile);
         loadBuffer = new LoadBuffer(clock , loadBufferLength, bus);
         storeBuffer = new StoreBuffer(clock ,storeBufferLength);
-        AddSubStation = new ReservationStation(clock ,addSubCycles,0, addSubLength, bus);
-        MulDivStation= new ReservationStation(clock , 0, mulDivCycles , mulDivLength, bus);
-        bus = new Bus(registerFile,loadBuffer,storeBuffer,AddSubStation,MulDivStation);
-
+        addSubStaion = new ReservationStation(clock ,addSubCycles,0, addSubLength, bus);
+        mulDivStaion= new ReservationStation(clock , 0, mulDivCycles , mulDivLength, bus);
+        bus.setListeners(new BusListener[]{loadBuffer,storeBuffer,addSubStaion,mulDivStaion});
         //initializing register file registers
         for(int i = 0 ; i < registerFile.length ; i++){
             registerFile[i] = new Register();
+            registerFile[i].setRegNumber(i);
         }
 
         registerFile[0].updateRegister(50);
@@ -54,38 +58,46 @@ public class Main{
         System.out.println(queue);
     }
 
+    int x = 50;
+
     public void executeProgram(){
-        while(!queue.isEmpty()){
+
+        while(!queue.isEmpty() || !addSubStaion.finishedExecution() || !mulDivStaion.finishedExecution()){
 
             clock.updateClock();
             System.out.println("***********************************************************************************************");
-            System.out.println(clock.getCycles());
+            System.out.println("Cycle: "+clock.getCycles());
+            System.out.println();
+
             InstructionCompiler nextInstruction = queue.peek();
-            System.out.println(queue.peek().toString());
 
-            Register firstOperand = registerFile[nextInstruction.getFirstOperand()];
-            Register secondOperand = registerFile[nextInstruction.getSecondOperand()];
-            int destination = nextInstruction.getDestinationRegister();
-            int address = nextInstruction.getMemoryAddress();
+            if (nextInstruction != null) {
+                System.out.println("Trying to issue: ");
+                System.out.println(queue.peek().toString());
 
-            boolean issued = false;
+                Register firstOperand = registerFile[nextInstruction.getFirstOperand()];
+                Register secondOperand = registerFile[nextInstruction.getSecondOperand()];
+                Register destination = registerFile[nextInstruction.getDestinationRegister()];
+                int address = nextInstruction.getMemoryAddress();
 
-            switch (nextInstruction.getInstructionType()){
+                boolean issued = false;
 
-                case "ADD":
-                    issued = AddSubStation.issueAddSub(destination, firstOperand, secondOperand ,true);
-                    break;
+                switch (nextInstruction.getInstructionType()) {
 
-                case "SUB":
-                    issued = AddSubStation.issueAddSub(destination, firstOperand, secondOperand ,false);
-                    break;
+                    case "ADD":
+                        issued = addSubStaion.issueAddSub(destination, firstOperand, secondOperand, true);
+                        break;
 
-                case "MUL":
-                    issued = MulDivStation.issueMulDiv(destination, firstOperand, secondOperand ,true);
-                    break;
+                    case "SUB":
+                        issued = addSubStaion.issueAddSub(destination, firstOperand, secondOperand, false);
+                        break;
+
+                    case "MUL":
+                        issued = mulDivStaion.issueMulDiv(destination, firstOperand, secondOperand, true);
+                        break;
 
 //                case "DIV":
-//                    issued = MulDivStation.issueMulDiv(destination, firstOperand, secondOperand ,false);
+//                    issued = mulDivStaion.issueMulDiv(destination, firstOperand, secondOperand ,false);
 //                    break;
 //
 //                case "LD":
@@ -95,19 +107,23 @@ public class Main{
 //                case "SD":
 //                    issued = storeBuffer.issue(firstOperand,destination);
 //                    break;
-            }
+                }
 
-            if(issued) {
-                System.out.println("instruction issued");
-                queue.poll();
-            }
-            else
-                System.out.println("Failed to Issue");
+                if (issued) {
+                    System.out.println("instruction issued");
+                    queue.poll();
+                } else
+                    System.out.println("Failed to Issue");
+                System.out.println();
 
+            }
+            addSubStaion.executeAddSub();
+            mulDivStaion.executeMulDiv();
+
+            System.out.println("Register file: " + Arrays.toString(registerFile));
         }
 
-        AddSubStation.executeAddSub();
-        MulDivStation.executeMulDiv();
+
         //        loadBuffer.execute();
         //        storeBuffer.execute() ;
 
@@ -117,7 +133,7 @@ public class Main{
 
 
     public static void main(String [] args) throws IOException {
-        Main main = new Main("programme.txt",5,5,5,5,2,5,8,8);
+        Main main = new Main("programme.txt",5,5,1,5,2,5,8,8);
         main.executeProgram();
     }
 }

@@ -2,6 +2,7 @@ package instructions;
 
 public class Register {
 
+    private int regNumber ;
     private boolean ready;
     private double value ;
     private String instruction;
@@ -16,6 +17,9 @@ public class Register {
         this.value = newVal;
     }
 
+    public String toString () {
+        return "[R"+regNumber+" = "+value+"]";
+    }
     public double getValue() {
         return value;
     }
@@ -36,7 +40,12 @@ public class Register {
         return instruction;
     }
 
+    public void setRegNumber(int regNumber) {
+        this.regNumber = regNumber;
+    }
+
     public void setInstruction(String instruction) {
+        this.ready = false;
         this.instruction = instruction;
     }
 }

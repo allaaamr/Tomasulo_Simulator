@@ -4,16 +4,14 @@ import bus.*;
 public class MultiplyDivInstruction {
 
     private String station;
-    private Integer destination ;
     private double result;
     private Boolean op; // true => multiplication ... false => division
     private Bus bus;
 
-    public MultiplyDivInstruction(String station , int destination, boolean op, Bus bus){
+    public MultiplyDivInstruction(String station , boolean op, Bus bus){
         this.station = station;
         this.op = op;
         this.bus = bus;
-        this.destination = destination;
     }
 
     public double compute(double operand1,double operand2){
@@ -41,18 +39,6 @@ public class MultiplyDivInstruction {
     public Boolean getOp() { return op;}
 
     public void setOp(Boolean op) { this.op = op;}
-
-    public Integer getDestination() {
-        return destination;
-    }
-
-    public void setDestination(Integer destination) {
-        this.destination = destination;
-    }
-
-    public double getResult() {
-        return result;
-    }
 
 
 }

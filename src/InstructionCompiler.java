@@ -7,9 +7,12 @@ public class InstructionCompiler {
      private int firstOperand ;
      private int secondOperand ;
      private int memoryAddress ;
+     private String ins;
 
 
      public InstructionCompiler(String instruction) {
+          this.ins = instruction;
+
           Pattern pattern = Pattern.compile("([A-Za-z0-9]+) *");
           Matcher matcher = pattern.matcher(instruction);
           if(matcher.find()) //set the destination register
@@ -41,6 +44,9 @@ public class InstructionCompiler {
           }
      }
 
+     public String toString () {
+          return ins;
+     }
      public String getInstructionType() {
           return instructionType;
      }
