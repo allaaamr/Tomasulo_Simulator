@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="Adding Bus and BusListener">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/AddSubInstruction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/InstructionCompiler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/LoadBuffer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/MulDivInstruction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/ReservationStation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/operators/Adder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/operators/LoadStore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/operators/Multiplier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InstructionCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InstructionCompiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ReservationStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bus/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bus/Bus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/instructions/AddSubInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/AddSubInstruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/instructions/MultiplyDivInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/MultiplyDivInstruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/instructions/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/Register.java" afterDir="false" />
-    </list>
+    <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="Fixing errors in programme execution" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,7 +121,21 @@
       <option name="project" value="LOCAL" />
       <updated>1640628383503</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fixing errors in programme execution">
+      <created>1641084253376</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1641084253376</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixing errors in programme execution">
+      <created>1641084271442</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1641084271442</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,7 +166,8 @@
     <MESSAGE value="LoadBuffer done" />
     <MESSAGE value="Adding instruction compiler" />
     <MESSAGE value="Adding Bus and BusListener" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Bus and BusListener" />
+    <MESSAGE value="Fixing errors in programme execution" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing errors in programme execution" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tomasulo_Simulator$InstructionCompiler.ic" NAME="InstructionCompiler Coverage Results" MODIFIED="1640614491205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
