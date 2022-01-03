@@ -17,13 +17,10 @@ public class MultiplyDivInstruction {
     public double compute(double operand1,double operand2){
         if(op){
             result = operand1*operand2;
-            System.out.println("MUL RESULT: " + result );
         }
         else {
             result = operand1 / operand2;
-            System.out.println("DIV RESULT: " + result );
         }
-        bus.notify(station, result);
         return result;
     }
 

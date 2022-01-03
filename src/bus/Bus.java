@@ -25,7 +25,7 @@ public class Bus {
             i.update(instruction,updatedValue);
 
         Register r =  waitingInstructions.get(instruction);
-        if(r.getInstruction().equals(instruction)) {
+        if( r!= null && r.getInstruction().equals(instruction)) {
             waitingInstructions.get(instruction).updateRegister(updatedValue);
             waitingInstructions.remove(instruction);
         }
@@ -33,6 +33,8 @@ public class Bus {
     public void pushWaitingInstruction (String station,Register register) {
         waitingInstructions.put(station,register);
     }
+
+
 
     public void setListeners(BusListener l []){
         this.listeners = l;

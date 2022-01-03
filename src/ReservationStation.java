@@ -2,6 +2,7 @@ import bus.*;
 import instructions.*;
 
 import java.util.Arrays;
+import java.util.Queue;
 import java.util.logging.Level;
 
 public class ReservationStation implements BusListener{
@@ -11,10 +12,11 @@ public class ReservationStation implements BusListener{
     private Clock clock;
     private int addSubCycles ;
     private int mulDivCycles ;
+    Queue<WBObject> WB;
     InstructionStatus status;
 
 
-    public ReservationStation (Clock clock ,Integer addSubCycles ,Integer mulDivCycles,Integer stationLength, Bus bus, InstructionStatus status){
+    public ReservationStation (Clock clock ,Integer addSubCycles ,Integer mulDivCycles,Integer stationLength, Bus bus, InstructionStatus status,  Queue <WBObject> WB ){
         this.length= stationLength;
         this.table = new Object[length][7];
         this.bus = bus;
@@ -22,6 +24,7 @@ public class ReservationStation implements BusListener{
         this.addSubCycles = addSubCycles;
         this.mulDivCycles = mulDivCycles;
         this.status = status;
+        this.WB = WB;
         // column 0 -> Busy
         // column 1 -> Instruction
         // column 2 -> Vj
@@ -31,7 +34,6 @@ public class ReservationStation implements BusListener{
         // column 6 -> Remaining cycles for execution
 
     }
-
 
     public boolean issueAddSub(Register rd, Register rs, Register rt, boolean type ){
         AddSubInstruction instruction = new AddSubInstruction("" ,type, bus);
@@ -45,6 +47,7 @@ public class ReservationStation implements BusListener{
                 this.table[i][4] = rs.isReady() ? null :  rs.getInstruction();
                 this.table[i][5] = rt.isReady() ? null :  rt.getInstruction();
                 this.table[i][6] = addSubCycles;
+
                 //Instruction issued successfully.
                 int index = status.getLastIndex();
                 status.statusTable [index][5] = "A"+i;
@@ -59,32 +62,41 @@ public class ReservationStation implements BusListener{
     }
 
     public void executeAddSub() {
-        for (Object row[] : table){
-            if(row[0] == null)
+        for (int i=0; i<length; i++){
+
+            if(table[i][0] == null || !((boolean) table[i][0]))
                 continue;
-            if ( ((boolean) row[0]) && row[2] != null && row[3] != null){
-                /// It will start executing
-                if( (int) row[6] == this.addSubCycles) {
-                    row[6] = (int) row[6] - 1;
+
+            AddSubInstruction ins = (AddSubInstruction) table[i][1];
+            int instructionIndex = status.stationIndex( ins.getStation() );
+            boolean justIssued = (int) status.statusTable[instructionIndex][1] == clock.getCycles();
+
+            if(justIssued)
+                continue;
+
+            if ( ((boolean) table[i][0]) && table[i][2] != null && table[i][3] != null){
+
+                if( (int) table[i][6] == this.addSubCycles) {
+                    table[i][6] = (int) table[i][6] - 1;
                     //mark this instruction in the status table that it started executing
-                    int instructionIndex = status.stationIndex( ((AddSubInstruction)row[1]).getStation() );
                     status.statusTable[instructionIndex][2]= clock.getCycles();
                 }
 
-                //instruction is still executing, edit remaining cycles
-                else if( (int) row[6] > 0)
-                    row[6] = (int) row[6] - 1;
-
                 //instruction finished executing
-                else{
-                    row[0] = false;
-                    AddSubInstruction ins = (AddSubInstruction) row[1];
-                    ins.compute((double) row[2], (double) row[3]);
+                if( (int) table[i][6] == 0){
+                    String station = ins.getStation();
+                    double result = ins.compute((double) table[i][2], (double) table[i][3]);
+                    WBObject wb = new WBObject(station, result, instructionIndex,this.table, i, false, -1 );
+                    WB.add(wb);
                     //mark this instruction in the status table as done
-                    int instructionIndex = status.stationIndex(ins.getStation() );
                     status.statusTable[instructionIndex][3]= clock.getCycles();
-                    status.statusTable[instructionIndex][4]= clock.getCycles() +1;
                 }
+
+                //instruction is still executing, edit remaining cycles
+                else if( (int) table[i][6] > 0)
+                    table[i][6] = (int) table[i][6] - 1;
+
+
             }
         }
     }
@@ -115,35 +127,41 @@ public class ReservationStation implements BusListener{
     }
 
     public void executeMulDiv() {
-        for (Object row[] : table){
-            if(row[0] == null)
+        for (int i=0; i<length; i++){
+            if(table[i][0] == null || !((boolean) table[i][0]))
                 continue;
 
-            if ( ((boolean) row[0]) && row[2] != null && row[3] != null){
+            MultiplyDivInstruction ins = (MultiplyDivInstruction) table[i][1];
+            int instructionIndex = status.stationIndex( ins.getStation() );
+            boolean justIssued = (int) status.statusTable[instructionIndex][1] == clock.getCycles();
+
+            if(justIssued)
+                continue;
+
+            if ( ((boolean) table[i][0]) && table[i][2] != null && table[i][3] != null){
                 /// It will start executing
-                if( (int) row[6] == this.mulDivCycles) {
-                    row[6] = (int) row[6] - 1;
+                if( (int) table[i][6] == this.mulDivCycles) {
+                    table[i][6] = (int) table[i][6] - 1;
                     //mark this instruction in the status table that it started executing
-                    int instructionIndex = status.stationIndex( ((MultiplyDivInstruction)row[1]).getStation() );
                     status.statusTable[instructionIndex][2]= clock.getCycles();
                 }
 
-                //instruction is still executing, edit remaining cycles
-                else if( (int) row[6] > 0)
-                    row[6] = (int) row[6] - 1;
-
-                    //instruction finished executing
-                else{
-                    row[0] = false;
-                    MultiplyDivInstruction ins = (MultiplyDivInstruction) row[1];
-                    ins.compute((double) row[2], (double) row[3]);
+                //instruction finished executing
+                if( (int) table[i][6] == 0){
+                    String station = ins.getStation();
+                    double result =ins.compute((double) table[i][2], (double) table[i][3]);
+                    WBObject wb = new WBObject(station, result, instructionIndex, table, i, false, -1);
+                    WB.add(wb);
                     //mark this instruction in the status table as done
-                    int instructionIndex = status.stationIndex(ins.getStation() );
                     status.statusTable[instructionIndex][3]= clock.getCycles();
-                    // write back
-                    status.statusTable[instructionIndex][4]= clock.getCycles() +1;
+
 
                 }
+                //instruction is still executing, edit remaining cycles
+                else if( (int) table[i][6] > 0)
+                    table[i][6] = (int) table[i][6] - 1;
+
+
             }
         }
     }

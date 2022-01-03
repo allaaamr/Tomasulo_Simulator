@@ -22,11 +22,14 @@ public class InstructionCompiler {
           if (matcher.find())
                destinationRegister = Integer.parseInt(matcher.group(1).substring(1)) ;
 
-          if (instructionType.equals("LD") || instructionType.equals("SD")){ // LD R1, 100 |||| ST R2, 200
+          if (instructionType.equals("LD") || instructionType.equals("SD")) { // LD R1, 100 |||| SD R2, 200
+
                pattern = Pattern.compile(", *([A-Za-z0-9]+) *");
                matcher = pattern.matcher(instruction);
-               if (matcher.find()) //set the memory address
-                    memoryAddress = Integer.parseInt(matcher.group(1).substring(1));
+
+               if (matcher.find()) { //set memory address
+                    memoryAddress = Integer.parseInt(matcher.group(1));
+                }
           }
           else if (instructionType.equals("ADD") ||
                    instructionType.equals("SUB") ||
