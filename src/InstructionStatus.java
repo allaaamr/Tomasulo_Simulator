@@ -37,7 +37,7 @@ public class InstructionStatus {
     }
     public boolean finishedProgram(){
         for( Object row[]: statusTable){
-            if (row[4] == null)
+            if (row[4] == null )
                 return false;
         }
         return true;

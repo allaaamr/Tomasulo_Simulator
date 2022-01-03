@@ -19,12 +19,17 @@ public class LoadStore {
         this.memory = memory;
     }
 
-    public void execute(){
+    public double execute(){
+        //LOAD
         if(op){
-            destination.setValue(memory[address]);
+            // removed from here because the load writes back to the register file in the write back stage and not in the execution stage
+//            destination.setValue(memory[address]);
+            return memory[address];
         }
+        //STORE
         else
-            memory[address] = destination.getValue();
+            return destination.getValue();
+
     }
 
 

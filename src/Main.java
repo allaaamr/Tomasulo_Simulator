@@ -124,25 +124,28 @@ public class Main{
 
 
                 }
+
+
             if(!WB.isEmpty()){
 
                 WBObject wb = WB.poll();
                 // if store
                 if(wb.store) {
-                    // write in memory
                     // memory[address] = destination.getValue();
                     memory[wb.address] = wb.result;
 //                    System.out.println("memory" + memory[0]);
                 }
                 else
                      bus.notify(wb.stationTag, wb.result);
+
                 System.out.println("Station "+ wb.stationTag + " is writing on the bus");
+
                 wb.stationTable[wb.stationIndex][0] = false;
                 status.statusTable[wb.instructionIndex][4]= clock.getCycles();
             }
 
-            addSubStation.executeAddSub();
             mulDivStation.executeMulDiv();
+            addSubStation.executeAddSub();
             loadBuffer.execute();
             storeBuffer.execute();
 

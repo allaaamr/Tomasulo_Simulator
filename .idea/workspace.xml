@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="Fixing errors in programme execution" />
+    <list default="true" id="488f4c48-2b75-435b-a959-ef7a08f133e4" name="Default Changelist" comment="Adding Bus and BusListener">
+      <change afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/StoreBuffer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/bus/Bus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/bus/BusListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/bus/Clock.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/instructions/AddSubInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/instructions/LoadStore.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/instructions/MultiplyDivInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/instructions/Register.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/programme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/AddSubInstruction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/InstructionCompiler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/InstructionCompiler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/LoadBuffer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/LoadBuffer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/MulDivInstruction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/ReservationStation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/ReservationStation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/operators/Adder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/operators/LoadStore.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tomasulo_Simulator/operators/Multiplier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InstructionCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InstructionCompiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReservationStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReservationStation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bus/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bus/Bus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/instructions/AddSubInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/AddSubInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/instructions/MultiplyDivInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/MultiplyDivInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/instructions/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/Register.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

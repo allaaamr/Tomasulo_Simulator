@@ -71,7 +71,7 @@ public class ReservationStation implements BusListener{
             int instructionIndex = status.stationIndex( ins.getStation() );
             boolean justIssued = (int) status.statusTable[instructionIndex][1] == clock.getCycles();
 
-            if(justIssued)
+            if(justIssued || status.statusTable[instructionIndex][3]!=null)
                 continue;
 
             if ( ((boolean) table[i][0]) && table[i][2] != null && table[i][3] != null){
@@ -82,6 +82,10 @@ public class ReservationStation implements BusListener{
                     status.statusTable[instructionIndex][2]= clock.getCycles();
                 }
 
+                //instruction is still executing, edit remaining cycles
+                else if( (int) table[i][6] > 0)
+                    table[i][6] = (int) table[i][6] - 1;
+
                 //instruction finished executing
                 if( (int) table[i][6] == 0){
                     String station = ins.getStation();
@@ -91,11 +95,6 @@ public class ReservationStation implements BusListener{
                     //mark this instruction in the status table as done
                     status.statusTable[instructionIndex][3]= clock.getCycles();
                 }
-
-                //instruction is still executing, edit remaining cycles
-                else if( (int) table[i][6] > 0)
-                    table[i][6] = (int) table[i][6] - 1;
-
 
             }
         }
@@ -127,15 +126,18 @@ public class ReservationStation implements BusListener{
     }
 
     public void executeMulDiv() {
+
         for (int i=0; i<length; i++){
+
             if(table[i][0] == null || !((boolean) table[i][0]))
                 continue;
+
 
             MultiplyDivInstruction ins = (MultiplyDivInstruction) table[i][1];
             int instructionIndex = status.stationIndex( ins.getStation() );
             boolean justIssued = (int) status.statusTable[instructionIndex][1] == clock.getCycles();
 
-            if(justIssued)
+            if(justIssued || status.statusTable[instructionIndex][3]!=null)
                 continue;
 
             if ( ((boolean) table[i][0]) && table[i][2] != null && table[i][3] != null){
@@ -145,6 +147,10 @@ public class ReservationStation implements BusListener{
                     //mark this instruction in the status table that it started executing
                     status.statusTable[instructionIndex][2]= clock.getCycles();
                 }
+
+                //instruction is still executing, edit remaining cycles
+                else if( (int) table[i][6] > 0)
+                    table[i][6] = (int) table[i][6] - 1;
 
                 //instruction finished executing
                 if( (int) table[i][6] == 0){
@@ -157,11 +163,6 @@ public class ReservationStation implements BusListener{
 
 
                 }
-                //instruction is still executing, edit remaining cycles
-                else if( (int) table[i][6] > 0)
-                    table[i][6] = (int) table[i][6] - 1;
-
-
             }
         }
     }
