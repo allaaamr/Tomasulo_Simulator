@@ -25,6 +25,7 @@ public class AddSubInstruction {
             result = operand1 - operand2;
             System.out.println("SUB RESULT: " + result );
         }
+
         return result;
     }
 

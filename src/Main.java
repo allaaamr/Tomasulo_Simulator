@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+import java.text.*;
 
 public class Main{
 
@@ -37,7 +38,7 @@ public class Main{
         }
         ////////////////////
         clock = new Clock();
-        memory = new double[2048];
+        memory = new double[64];
         registerFile =  new Register[32];
         bus = new Bus(registerFile);
         WB = new LinkedList<>();
@@ -53,14 +54,13 @@ public class Main{
         for(int i = 0 ; i < registerFile.length ; i++){
             registerFile[i] = new Register();
         }
-
+        memory[10] = 15;
+        memory[40] = 88;
         registerFile[0].updateRegister(5);
         registerFile[1].updateRegister(7);
         registerFile[2].updateRegister(2);
         registerFile[3].updateRegister(2);
         registerFile[5].updateRegister(-5);
-
-
     }
 
     public void executeProgram() {
@@ -74,6 +74,8 @@ public class Main{
                 System.out.println("***********************************************************************************************");
 
                 System.out.println("Cycle " + clock.getCycles());
+
+                //issue
                 if (!queue.isEmpty()) {
                     InstructionCompiler nextInstruction = queue.peek();
                     Register firstOperand = registerFile[nextInstruction.getFirstOperand()];
@@ -126,28 +128,32 @@ public class Main{
                 }
 
 
-            if(!WB.isEmpty()){
+                //Write Back
+                if(!WB.isEmpty()){
 
-                WBObject wb = WB.poll();
-                // if store
-                if(wb.store) {
-                    // memory[address] = destination.getValue();
-                    memory[wb.address] = wb.result;
-//                    System.out.println("memory" + memory[0]);
+                    WBObject wb = WB.poll();
+                    // if store
+                    if(wb.store) {
+                        // memory[address] = destination.getValue();
+                        memory[wb.address] = wb.result;
+                        wb.stationTable[wb.stationIndex][3] = false;
+    //                    System.out.println("memory" + memory[0]);
+                    }
+                    else {
+                        bus.notify(wb.stationTag, wb.result);
+                        wb.stationTable[wb.stationIndex][0] = false;
+                    }
+                    System.out.println(" ");
+                    System.out.println("Station "+ wb.stationTag + " is writing on the bus");
+
+                    status.statusTable[wb.instructionIndex][4]= clock.getCycles();
                 }
-                else
-                     bus.notify(wb.stationTag, wb.result);
+                //execute
+                mulDivStation.executeMulDiv();
+                addSubStation.executeAddSub();
+                loadBuffer.execute();
+                storeBuffer.execute();
 
-                System.out.println("Station "+ wb.stationTag + " is writing on the bus");
-
-                wb.stationTable[wb.stationIndex][0] = false;
-                status.statusTable[wb.instructionIndex][4]= clock.getCycles();
-            }
-
-            mulDivStation.executeMulDiv();
-            addSubStation.executeAddSub();
-            loadBuffer.execute();
-            storeBuffer.execute();
 
 
             // Printing Instruction Status
@@ -167,33 +173,33 @@ public class Main{
             // Printing ADD/ SUB Reservation Station
             System.out.println();
             System.out.println("ADD/ SUB Reservation Station:");
-            printStatusTable(addSubStation.getTable());
+            printASReservationStations(addSubStation.getTable());
             System.out.println();
 
                 // Printing MUL/ DIV Reservation Station
                 System.out.println();
                 System.out.println("MUL/ DIV Reservation Station:");
-                printStatusTable(mulDivStation.getTable());
+                printMDReservationStations(mulDivStation.getTable());
                 System.out.println();
 
                 // Printing Load Buffer
                 System.out.println();
                 System.out.println(" Load Buffer:");
-                printStatusTable(loadBuffer.getTable());
+                printLoad(loadBuffer.getTable());
                 System.out.println();
 
                 // Printing Store Buffer
                 System.out.println();
                 System.out.println("Store Buffer:");
-                printStatusTable(storeBuffer.getTable());
+                printStore(storeBuffer.getTable());
                 System.out.println();
 
-//                // Printing Memory
-//                System.out.println();
-//                System.out.println("Memory:");
-//                System.out.println();
-//                printMemory(memory);
-//                System.out.println();
+                // Printing Memory
+                System.out.println();
+                System.out.println("Memory:");
+                System.out.println();
+                printMemory(memory);
+                System.out.println();
 
 
 
@@ -206,13 +212,19 @@ public class Main{
     }
 
     public static void printRegFile(Register [] registerFile){
+        System.out.print("R    Value    Q       ");
+        System.out.print("R    Value    Q       ");
+        System.out.print("R    Value    Q       ");
+        System.out.print("R    Value    Q       ");
+        System.out.println("");
         for(int i=0; i<32; i+=4){
-            System.out.print("R" +i +": "+registerFile[i].getValue() +"   ");
-            System.out.print("R" +(i+1) +": "+registerFile[i+1].getValue()+"   ");
-            System.out.print("R" +(i+2)  +": "+registerFile[i+2].getValue()+"   ");
-            System.out.print("R" +(i+3) +": "+registerFile[i+3].getValue()+"   ");
+            System.out.print("R" +i +":   "+registerFile[i].getValue() +"   " + registerFile[i].getInstruction() +"      ");
+            System.out.print("R" +(i+1) +":   "+registerFile[i+1].getValue() +"   " + registerFile[i+1].getInstruction() +"      ");
+            System.out.print("R" +(i+2)  +":   "+registerFile[i+2].getValue() +"   " + registerFile[i+2].getInstruction() +"      ");
+            System.out.print("R" +(i+3) +":   "+registerFile[i+3].getValue() +"   " + registerFile[i+3].getInstruction() +"      ");
             System.out.println();
         }
+
     }
 
     public static void printMemory(double [] memory){
@@ -225,9 +237,35 @@ public class Main{
         }
     }
 
+    public static void printASReservationStations(Object [][] status){
+        System.out.print("Tag   Busy   Vj    Vk    Qj    Qk");
+        System.out.println("");
+        for(int i=0; i<status.length; i++){
+            System.out.println("A"+i+"   "+ status[i][0] +",  " + status[i][2] +",  " + status[i][3]+",  " + status[i][4] +",  " + status[i][5]);
+        }
+    }
+    public static void printMDReservationStations(Object [][] status){
+        System.out.print("Tag   Busy   Vj    Vk    Qj    Qk");
+        System.out.println("");
+        for(int i=0; i<status.length; i++){
+            System.out.println("M"+i+"   "+ status[i][0] +",  " + status[i][2] +",  " + status[i][3]+",  " + status[i][4] +",  " + status[i][5]);
+        }
+    }
     public static void printStatusTable(Object [][] status){
         for(int i=0; i<status.length; i++){
             System.out.println(Arrays.toString(status[i]));
+        }
+    }
+    public static void printLoad(Object [][] status){
+        System.out.println("Tag   Busy   Address");
+        for(int i=0; i<status.length; i++){
+            System.out.println("L"+i+"   "+ status[i][0] +",     " + status[i][1]);
+        }
+    }
+    public static void printStore(Object [][] status){
+        System.out.println("Tag   Busy    Reg     Q");
+        for(int i=0; i<status.length; i++){
+            System.out.println("S"+i+"    "+ status[i][3] +",   " + status[i][1]+",   " + status[i][2]);
         }
     }
 
